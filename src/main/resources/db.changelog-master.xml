@@ -53,5 +53,11 @@
 
 
     </changeSet>
+    <changeSet id="3" author="lavruhin">
+        <createIndex tableName="mtm_author_book" indexName="unique_index_constraint" unique="true">
+            <column name="author_id"/>
+            <column name="book_id"/>
+        </createIndex>
+    </changeSet>
 
 </databaseChangeLog>
