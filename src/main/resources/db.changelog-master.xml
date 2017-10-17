@@ -1,0 +1,57 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet id="1" author="lavruhin">
+        <createTable tableName="book">
+            <column name="id" type="INTEGER"/>
+            <column name="name" type="TEXT"/>
+        </createTable>
+        <createTable tableName="author">
+            <column name="id" type="INTEGER"/>
+            <column name="name" type="TEXT"/>
+        </createTable>
+        <createTable tableName="mtm_author_book">
+            <column name="author_id" type="INTEGER"/>
+            <column name="book_id" type="INTEGER"/>
+        </createTable>
+        <createSequence sequenceName="id_gen" incrementBy="1" startValue="10000"/>
+    </changeSet>
+    <changeSet id="2" author="lavruhin">
+        <insert tableName="author">
+            <column name="id" value="1"/>
+            <column name="name" value="Bloch"/>
+        </insert>
+        <insert tableName="author">
+            <column name="id" value="2"/>
+            <column name="name" value="Knuth"/>
+        </insert>
+        <insert tableName="book">
+            <column name="id" value="1"/>
+            <column name="name" value="Java Concurrency In Practice"/>
+        </insert>
+        <insert tableName="book">
+            <column name="id" value="2"/>
+            <column name="name" value=" Java Puzzlers"/>
+        </insert>
+        <insert tableName="book">
+            <column name="id" value="3"/>
+            <column name="name" value="The Art of Computer Programming I"/>
+        </insert>
+        <insert tableName="book">
+            <column name="id" value="4"/>
+            <column name="name" value="The Art of Computer Programming II"/>
+        </insert>
+        <insert tableName="book">
+            <column name="id" value="5"/>
+            <column name="name" value="The Art of Computer Programming III"/>
+        </insert>
+        <insert tableName="book">
+            <column name="id" value="6"/>
+            <column name="name" value="The Art of Computer Programming IV"/>
+        </insert>
+
+
+    </changeSet>
+
+</databaseChangeLog>
