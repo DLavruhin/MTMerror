@@ -64,14 +64,11 @@ public class Author {
 
 		Author author = (Author) pO;
 
-		if (id != null ? !id.equals(author.id) : author.id != null) return false;
-		return books != null ? books.equals(author.books) : author.books == null;
+		return id != null ? id.equals(author.id) : author.id == null;
 	}
 
 	@Override
 	public int hashCode() {
-		int result = id != null ? id.hashCode() : 0;
-		result = 31 * result + (books != null ? books.hashCode() : 0);
-		return result;
+		return id != null ? id.hashCode() : 0;
 	}
 }
