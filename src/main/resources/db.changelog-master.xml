@@ -59,5 +59,8 @@
             <column name="book_id"/>
         </createIndex>
     </changeSet>
+    <changeSet id="4" author="lavruhin" runAlways="true">
+        <delete tableName="mtm_author_book"/>
+    </changeSet>
 
 </databaseChangeLog>

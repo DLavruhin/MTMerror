@@ -1,5 +1,6 @@
 package ru.test.mtm.db;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,7 +24,7 @@ public class Author {
 	@SequenceGenerator(name = "SEQ_CLIENT_ID_GENERATOR", sequenceName = "id_gen", allocationSize = 1)
 	private Integer id;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(
 			name = "mtm_author_book",
 			joinColumns = {@JoinColumn(name = "author_id", nullable = false, referencedColumnName = "id")},
@@ -54,5 +55,23 @@ public class Author {
 
 	public void setText(String pText) {
 		text = pText;
+	}
+
+	@Override
+	public boolean equals(Object pO) {
+		if (this == pO) return true;
+		if (!(pO instanceof Author)) return false;
+
+		Author author = (Author) pO;
+
+		if (id != null ? !id.equals(author.id) : author.id != null) return false;
+		return books != null ? books.equals(author.books) : author.books == null;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = id != null ? id.hashCode() : 0;
+		result = 31 * result + (books != null ? books.hashCode() : 0);
+		return result;
 	}
 }

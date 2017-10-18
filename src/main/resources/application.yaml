@@ -4,5 +4,7 @@ spring:
     username: sa
     password: sa
     driverClassName: org.postgresql.Driver
+  jpa:
+    show-sql: true
 liquibase:
   change-log: db.changelog-master.xml

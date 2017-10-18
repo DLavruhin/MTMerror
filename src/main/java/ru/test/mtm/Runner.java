@@ -26,7 +26,7 @@ public class Runner {
 	@Autowired
 	private AuthorServiceImpl mAuthorService;
 
-	@Scheduled(initialDelay = 1,fixedRate = Integer.MAX_VALUE)
+	@Scheduled(initialDelay = 1, fixedRate = Integer.MAX_VALUE)
 	private void run() {
 		LOGGER.info("Start runner");
 		List<Author> all = mAuthorRepository.findAll();
@@ -34,9 +34,22 @@ public class Runner {
 		Set<Book> selBooks = new HashSet<>();
 		List<Book> books = mBookRepository.findAll();
 		selBooks.add(books.get(0));
+		LOGGER.info("Add book 1");
 		mAuthorService.addBooks(author, selBooks);
 		selBooks = new HashSet<>();
 		selBooks.add(books.get(1));
+		LOGGER.info("Add book 2");
+		mAuthorService.addBooks(author, selBooks);
+		LOGGER.info("Recive books");
+		books = mBookRepository.findAll();
+		LOGGER.info("Add book 3");
+		selBooks = new HashSet<>();
+		selBooks.add(books.get(2));
+		mAuthorService.addBooks(author, selBooks);
+		selBooks = new HashSet<>();
+		selBooks.add(books.get(0));
+		selBooks.add(books.get(3));
+		LOGGER.info("Add book 4");
 		mAuthorService.addBooks(author, selBooks);
 
 	}
