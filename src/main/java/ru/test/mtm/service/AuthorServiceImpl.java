@@ -27,7 +27,7 @@ public class AuthorServiceImpl {
 
 	@Transactional
 	public void deleteBooks(Author pAuthor, Set<Book> pBooks) {
-		LOGGER.info("Deleta book");
+		LOGGER.info("Delete book");
 		pAuthor.getBooks().removeAll(pBooks);
 	}
 }
